@@ -21,6 +21,28 @@ function locationError(err) {
   console.log('Error requesting location!');
 }
 
+function writeToFirebase(pos) {
+	var uid = Pebble.getAccountToken();
+	ref.child(uid).once('value', function(snapshot) {
+    var exists = (snapshot.val() !== null);
+    if (exists) {
+  		ref.child(uid).set({
+    		latitude: pos.coords.latitude,
+    		longitude: pos.coords.longitude
+  		});
+    } else {
+    	ref.push().set({
+    		device: uid
+  		});
+  		ref.child(uid).set({
+    		latitude: pos.coords.latitude,
+    		longitude: pos.coords.longitude
+  		});
+    }
+  });
+	//ref.set({name: pos.coords.latitude, text: pos.coords.longitude});
+}
+
 function locationSuccess(pos){
 	var targetLat = 43.4771239;
 	var targetLong = -80.5488477;
@@ -39,7 +61,7 @@ function locationSuccess(pos){
   Pebble.sendAppMessage(dictionary,
     function(e) {
       console.log('Location info sent to Pebble successfully!');
-      ref.set({name: pos.coords.latitude, text: pos.coords.longitude});
+      writeToFirebase(pos);
     },
     function(e) {
       console.log('Error sending location info to Pebble!');
