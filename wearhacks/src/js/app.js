@@ -3,12 +3,12 @@ require('firebase');
 
 Firebase.INTERNAL.forceWebSockets();
 var ref = new Firebase("https://blistering-heat-4723.firebaseio.com/");
-ref.set({ name: "PebbleB" });
+//ref.set({ name: "PebbleB" });
 // Listen for realtime changes
 ref.on('value', function(dataSnapshot) {
-  var name = dataSnapshot->key();
-  var text = dataSnapshot->val();
-  console.log("My name is " + name + " And this is the text" + text);
+  var newPost = dataSnapshot.val();
+
+  console.log("My name is " + JSON.stringify(newPost));
 });
 
 var method = 'GET';
