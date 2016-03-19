@@ -48,9 +48,11 @@ static void window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
 
-  text_layer = text_layer_create(GRect(0, 72, bounds.size.w, 20));
+  text_layer = text_layer_create(
+      GRect(0, PBL_IF_ROUND_ELSE(58, 52), bounds.size.w, 50));
   text_layer_set_text(text_layer, "Press a button");
   text_layer_set_text_alignment(text_layer, GTextAlignmentCenter);
+  text_layer_set_font(text_layer, fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD));
   layer_add_child(window_layer, text_layer_get_layer(text_layer));
 }
 
@@ -85,38 +87,12 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
   Tuple *long_tuple = dict_find(iterator, KEY_LONG);
   Tuple *diff_tuple = dict_find(iterator, KEY_DIFF);
 
-  if(lat_tuple && long_tuple) {// && diff_tuple) {
-    //snprintf(lat_tuple, sizeof(lat_tuple), "%dC", (int)temp_tuple->value->int32);
-    //snprintf(conditions_buffer, sizeof(conditions_buffer), "%s", conditions_tuple->value->cstring);
+  if(lat_tuple && long_tuple) {
     latitude=lat_tuple->value->int32;
     longitude=long_tuple->value->int32;
     diff=diff_tuple->value->int32;
     displayLocation();
-    // Assemble full string and display
-    //snprintf(weather_layer_buffer, sizeof(weather_layer_buffer), "%s, %s", temperature_buffer, conditions_buffer);
-    //text_layer_set_text(s_weather_layer, weather_layer_buffer);
   }
-
-
-  //APP_LOG(APP_LOG_LEVEL_INFO,difference);
-  /*static char temperature_buffer[8];
-  static char conditions_buffer[32];
-  static char weather_layer_buffer[32];
-  
-  // Read tuples for data
-  Tuple *temp_tuple = dict_find(iterator, KEY_TEMPERATURE);
-  Tuple *conditions_tuple = dict_find(iterator, KEY_CONDITIONS);
-  
-  // If all data is available, use it
-  if(temp_tuple && conditions_tuple) {
-    snprintf(temperature_buffer, sizeof(temperature_buffer), "%dC", (int)temp_tuple->value->int32);
-    snprintf(conditions_buffer, sizeof(conditions_buffer), "%s", conditions_tuple->value->cstring);
-    
-    // Assemble full string and display
-    snprintf(weather_layer_buffer, sizeof(weather_layer_buffer), "%s, %s", temperature_buffer, conditions_buffer);
-    text_layer_set_text(s_weather_layer, weather_layer_buffer);
-  }*/
-
 }
 
 static void inbox_dropped_callback(AppMessageResult reason, void *context) {
