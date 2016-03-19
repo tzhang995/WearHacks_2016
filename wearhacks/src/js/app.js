@@ -32,16 +32,18 @@ function writeToFirebase(pos) {
 }
 
 function locationSuccess(pos){
+	var targetLat;
+	var targetLong;
 	ref.once("value", function(snapshot){
 		snapshot.forEach(function(childSnapshot) {
 	    	// key will be "fred" the first time and "barney" the second time
 	    	var key = childSnapshot.key();
-
-	    	//if ()
-
-	    	// childData will be the actual contents of the child
-	    	var childData = childSnapshot.val();
-	    	console.log(key + "WHAH" + JSON.stringify(childData));
+ 
+	    	if (key == Pebble.getWatchToken()){
+	    		// childData will be the actual contents of the child
+	    		var childData = childSnapshot.val();
+	    		console.log(childData.name + "WHAH" + childData.text);
+	    	}
 		});
 	});
 	//var diff = getLocationDist(targetLat,targetLong,pos.coords.latitude,pos.coords.longitude);
