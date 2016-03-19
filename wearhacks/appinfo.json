@@ -14,7 +14,9 @@
   "appKeys": {
     "KEY_LAT": 0,
     "KEY_LONG": 1,
-    "KEY_DIFF": 2
+    "KEY_DIFF": 2,
+    "KEY_SLOW": 0,
+    "KEY_FAST": 1
   },
   "resources": {
     "media": [

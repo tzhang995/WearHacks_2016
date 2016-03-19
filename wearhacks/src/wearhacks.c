@@ -5,10 +5,14 @@ static TextLayer *text_layer;
 #define KEY_LAT 0
 #define KEY_LONG 1
 #define KEY_DIFF 2
+#define KEY_SLOW 0
+#define KEY_FAST 1
 
 static int latitude;
 static int longitude;
 static int diff;
+static int slow;
+static int fast;
 
 /*const uint32_t const segments[] = { 100 };
     VibePattern pat = {
@@ -86,6 +90,25 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
   Tuple *lat_tuple = dict_find(iterator, KEY_LAT);
   Tuple *long_tuple = dict_find(iterator, KEY_LONG);
   Tuple *diff_tuple = dict_find(iterator, KEY_DIFF);
+  Tuple *slow_tuple = dict_find(iterator, KEY_SLOW);
+  Tuple *fast_tuple = dict_find(iterator, KEY_FAST);
+  slow = slow_tuple->value->int32;
+  fast = fast_tuple->value->int32;
+  if (slow == 1){
+    static const uint32_t const segments[] = { 1000,10,1000 };
+    VibePattern pat = {
+      .durations = segments,
+      .num_segments = ARRAY_LENGTH(segments),
+    };
+    vibes_enqueue_custom_pattern(pat);
+  } else {
+    static const uint32_t const segments[] = { 50, 10, 50 };
+    VibePattern pat = {
+      .durations = segments,
+      .num_segments = ARRAY_LENGTH(segments),
+    };
+    vibes_enqueue_custom_pattern(pat);
+  }
 
   if(lat_tuple && long_tuple) {
     latitude=lat_tuple->value->int32;
