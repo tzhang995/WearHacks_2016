@@ -52,8 +52,8 @@ function locationSuccess(pos){
     //console.log("LONG: " + pos.coords.longitude);
     //console.log("DIFF: " + diff);
 	var dictionary = {
-		'KEY_LAT': pos.coords.latitude,
-		'KEY_LONG': pos.coords.longitude
+		'KEY_LAT': pos.coords.latitude*100000,
+		'KEY_LONG': pos.coords.longitude*100000,
 		//'KEY_DIFF' : diff
 	};
 
@@ -67,6 +67,26 @@ function locationSuccess(pos){
       console.log('Error sending location info to Pebble!');
     }
   );
+}
+
+var positionWatcher;
+setPositionWatcher();
+function setPositionWatcher(){
+  target = {
+  latitude : 0,
+  longitude: 0
+  };
+
+  options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
+
+  positionWatcher = navigator.geolocation.watchPosition(addDataInterval, positionWatcherError, options);
+}
+function positionWatcherError(){
+	console.log('Error while trying to set up a position watcher');
 }
 
 
