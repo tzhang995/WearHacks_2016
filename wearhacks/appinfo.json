@@ -1,7 +1,7 @@
 {
   "uuid": "d55e73d7-85f1-4e98-bf4f-8f333a4eef31",
-  "shortName": "wearhacks",
-  "longName": "wearhacks",
+  "shortName": "Discover",
+  "longName": "Discover",
   "companyName": "MakeAwesomeHappen",
   "versionLabel": "1.0",
   "sdkVersion": "3",
@@ -16,6 +16,13 @@
     "KEY_DIFF": 2
   },
   "resources": {
-    "media": []
+    "media": [
+      {
+        "type": "png",
+        "name": "ICON",
+        "file": "images/icon.png",
+        "menuIcon": true
+      }
+    ]
   }
 }
