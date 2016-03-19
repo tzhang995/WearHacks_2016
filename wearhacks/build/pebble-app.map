@@ -188,8 +188,6 @@ Discarded input sections
                 0x0000000000000000        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
  .text.dict_write_uint8
                 0x0000000000000000        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
- .text.fonts_get_system_font
-                0x0000000000000000        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
  .text.fonts_load_custom_font
                 0x0000000000000000        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
  .text.fonts_unload_custom_font
@@ -864,8 +862,6 @@ Discarded input sections
                 0x0000000000000000        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
  .text.text_layer_set_background_color
                 0x0000000000000000        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
- .text.text_layer_set_font
-                0x0000000000000000        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
  .text.text_layer_set_overflow_mode
                 0x0000000000000000        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
  .text.text_layer_set_size
@@ -1190,7 +1186,7 @@ LOAD /home/tony/pebble-dev/pebble-sdk-4.2-linux64/arm-cs-tools/bin/../lib/gcc/ar
  .note.gnu.build-id
                 0x0000000000000084       0x24 linker stubs
 
-.text           0x00000000000000a8      0x4ac
+.text           0x00000000000000a8      0x4f4
  *(.text)
  .text          0x00000000000000a8       0x14 /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
  *(.text.*)
@@ -1209,138 +1205,144 @@ LOAD /home/tony/pebble-dev/pebble-sdk-4.2-linux64/arm-cs-tools/bin/../lib/gcc/ar
  .text.window_unload
                 0x00000000000001d0       0x10 src/wearhacks.c.24.o
  .text.window_load
-                0x00000000000001e0       0x68 src/wearhacks.c.24.o
+                0x00000000000001e0       0x7c src/wearhacks.c.24.o
  .text.click_config_provider
-                0x0000000000000248       0x30 src/wearhacks.c.24.o
+                0x000000000000025c       0x30 src/wearhacks.c.24.o
  .text.down_click_handler
-                0x0000000000000278       0x30 src/wearhacks.c.24.o
+                0x000000000000028c       0x30 src/wearhacks.c.24.o
  .text.startup.main
-                0x00000000000002a8       0xb8 src/wearhacks.c.24.o
-                0x00000000000002a8                main
+                0x00000000000002bc       0xb8 src/wearhacks.c.24.o
+                0x00000000000002bc                main
  .text.app_event_loop
-                0x0000000000000360        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x0000000000000360                app_event_loop
- .text.app_log  0x000000000000036c        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x000000000000036c                app_log
+                0x0000000000000374        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x0000000000000374                app_event_loop
+ .text.app_log  0x0000000000000380        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x0000000000000380                app_log
  .text.app_message_open
-                0x0000000000000378        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x0000000000000378                app_message_open
+                0x000000000000038c        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x000000000000038c                app_message_open
  .text.dict_find
-                0x0000000000000384        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x0000000000000384                dict_find
+                0x0000000000000398        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x0000000000000398                dict_find
+ .text.fonts_get_system_font
+                0x00000000000003a4        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x00000000000003a4                fonts_get_system_font
  .text.layer_add_child
-                0x0000000000000390        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x0000000000000390                layer_add_child
+                0x00000000000003b0        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x00000000000003b0                layer_add_child
  .text.layer_get_bounds
-                0x000000000000039c        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x000000000000039c                layer_get_bounds
- .text.memset   0x00000000000003a8        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x00000000000003a8                memset
+                0x00000000000003bc        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x00000000000003bc                layer_get_bounds
+ .text.memset   0x00000000000003c8        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x00000000000003c8                memset
  .text.snprintf
-                0x00000000000003b4        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x00000000000003b4                snprintf
+                0x00000000000003d4        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x00000000000003d4                snprintf
  .text.vibes_enqueue_custom_pattern
-                0x00000000000003c0        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x00000000000003c0                vibes_enqueue_custom_pattern
+                0x00000000000003e0        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x00000000000003e0                vibes_enqueue_custom_pattern
  .text.window_create
-                0x00000000000003cc        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x00000000000003cc                window_create
+                0x00000000000003ec        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x00000000000003ec                window_create
  .text.window_destroy
-                0x00000000000003d8        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x00000000000003d8                window_destroy
+                0x00000000000003f8        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x00000000000003f8                window_destroy
  .text.window_get_root_layer
-                0x00000000000003e4        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x00000000000003e4                window_get_root_layer
+                0x0000000000000404        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x0000000000000404                window_get_root_layer
  .text.window_set_click_config_provider
-                0x00000000000003f0        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x00000000000003f0                window_set_click_config_provider
+                0x0000000000000410        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x0000000000000410                window_set_click_config_provider
  .text.window_set_window_handlers
-                0x00000000000003fc        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x00000000000003fc                window_set_window_handlers
+                0x000000000000041c        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x000000000000041c                window_set_window_handlers
  .text.window_stack_push
-                0x0000000000000408        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x0000000000000408                window_stack_push
+                0x0000000000000428        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x0000000000000428                window_stack_push
  .text.app_message_register_inbox_dropped
-                0x0000000000000414        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x0000000000000414                app_message_register_inbox_dropped
+                0x0000000000000434        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x0000000000000434                app_message_register_inbox_dropped
  .text.app_message_register_inbox_received
-                0x0000000000000420        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x0000000000000420                app_message_register_inbox_received
+                0x0000000000000440        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x0000000000000440                app_message_register_inbox_received
  .text.app_message_register_outbox_failed
-                0x000000000000042c        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x000000000000042c                app_message_register_outbox_failed
+                0x000000000000044c        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x000000000000044c                app_message_register_outbox_failed
  .text.app_message_register_outbox_sent
-                0x0000000000000438        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x0000000000000438                app_message_register_outbox_sent
+                0x0000000000000458        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x0000000000000458                app_message_register_outbox_sent
  .text.window_single_click_subscribe
-                0x0000000000000444        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x0000000000000444                window_single_click_subscribe
+                0x0000000000000464        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x0000000000000464                window_single_click_subscribe
  .text.text_layer_create
-                0x0000000000000450        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x0000000000000450                text_layer_create
+                0x0000000000000470        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x0000000000000470                text_layer_create
  .text.text_layer_destroy
-                0x000000000000045c        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x000000000000045c                text_layer_destroy
+                0x000000000000047c        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x000000000000047c                text_layer_destroy
  .text.text_layer_get_layer
-                0x0000000000000468        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x0000000000000468                text_layer_get_layer
+                0x0000000000000488        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x0000000000000488                text_layer_get_layer
+ .text.text_layer_set_font
+                0x0000000000000494        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x0000000000000494                text_layer_set_font
  .text.text_layer_set_text
-                0x0000000000000474        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x0000000000000474                text_layer_set_text
+                0x00000000000004a0        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x00000000000004a0                text_layer_set_text
  .text.text_layer_set_text_alignment
-                0x0000000000000480        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
-                0x0000000000000480                text_layer_set_text_alignment
+                0x00000000000004ac        0xc /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+                0x00000000000004ac                text_layer_set_text_alignment
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x000000000000048c       0xba src/wearhacks.c.24.o
- *fill*         0x0000000000000546        0x2 
+                0x00000000000004b8       0xd5 src/wearhacks.c.24.o
+ *fill*         0x000000000000058d        0x3 
  .rodata.segments.7409
-                0x0000000000000548        0xc src/wearhacks.c.24.o
+                0x0000000000000590        0xc src/wearhacks.c.24.o
 
-.glue_7         0x0000000000000554        0x0
+.glue_7         0x000000000000059c        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x0000000000000554        0x0
+.glue_7t        0x000000000000059c        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x0000000000000554        0x0
+.vfp11_veneer   0x000000000000059c        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x0000000000000554        0x0
+.v4_bx          0x000000000000059c        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x0000000000000554        0x0
+.iplt           0x000000000000059c        0x0
  .iplt          0x0000000000000000        0x0 /home/tony/pebble-dev/pebble-sdk-4.2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
 
-.rel.dyn        0x0000000000000554        0x0
+.rel.dyn        0x000000000000059c        0x0
  .rel.iplt      0x0000000000000000        0x0 /home/tony/pebble-dev/pebble-sdk-4.2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
 
-.data           0x0000000000000554        0xc
+.data           0x000000000000059c        0xc
  *(.data)
- .data          0x0000000000000554        0x0 /home/tony/pebble-dev/pebble-sdk-4.2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crti.o
- .data          0x0000000000000554        0x4 /home/tony/pebble-dev/pebble-sdk-4.2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
-                0x0000000000000554                __dso_handle
- .data          0x0000000000000558        0x8 src/wearhacks.c.24.o
- .data          0x0000000000000560        0x0 aplite/appinfo.auto.c.24.o
- .data          0x0000000000000560        0x0 /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
- .data          0x0000000000000560        0x0 /home/tony/pebble-dev/pebble-sdk-4.2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtend.o
- .data          0x0000000000000560        0x0 /home/tony/pebble-dev/pebble-sdk-4.2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtn.o
+ .data          0x000000000000059c        0x0 /home/tony/pebble-dev/pebble-sdk-4.2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crti.o
+ .data          0x000000000000059c        0x4 /home/tony/pebble-dev/pebble-sdk-4.2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
+                0x000000000000059c                __dso_handle
+ .data          0x00000000000005a0        0x8 src/wearhacks.c.24.o
+ .data          0x00000000000005a8        0x0 aplite/appinfo.auto.c.24.o
+ .data          0x00000000000005a8        0x0 /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp8J753Spebble.o)
+ .data          0x00000000000005a8        0x0 /home/tony/pebble-dev/pebble-sdk-4.2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtend.o
+ .data          0x00000000000005a8        0x0 /home/tony/pebble-dev/pebble-sdk-4.2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtn.o
  *(.data.*)
 
-.igot.plt       0x0000000000000560        0x0
+.igot.plt       0x00000000000005a8        0x0
  .igot.plt      0x0000000000000000        0x0 /home/tony/pebble-dev/pebble-sdk-4.2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtbegin.o
 
-.bss            0x0000000000000560       0x14
+.bss            0x00000000000005a8       0x14
  *(.bss)
  *(.bss.*)
- .bss.diff      0x0000000000000560        0x4 src/wearhacks.c.24.o
+ .bss.diff      0x00000000000005a8        0x4 src/wearhacks.c.24.o
  .bss.text_layer
-                0x0000000000000564        0x4 src/wearhacks.c.24.o
+                0x00000000000005ac        0x4 src/wearhacks.c.24.o
  .bss.longitude
-                0x0000000000000568        0x4 src/wearhacks.c.24.o
- .bss.latitude  0x000000000000056c        0x4 src/wearhacks.c.24.o
- .bss.window    0x0000000000000570        0x4 src/wearhacks.c.24.o
+                0x00000000000005b0        0x4 src/wearhacks.c.24.o
+ .bss.latitude  0x00000000000005b4        0x4 src/wearhacks.c.24.o
+ .bss.window    0x00000000000005b8        0x4 src/wearhacks.c.24.o
 
 DISCARD
  libc.a(*)
@@ -1373,16 +1375,16 @@ OUTPUT(/home/tony/Documents/WearHacks_2016/wearhacks/build/aplite/pebble-app.elf
  .comment       0x0000000000000000       0x4f aplite/appinfo.auto.c.24.o
  .comment       0x0000000000000000       0x4f /home/tony/pebble-dev/pebble-sdk-4.2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtend.o
 
-.debug_info     0x0000000000000000     0x11a6
- .debug_info    0x0000000000000000      0xe9f src/wearhacks.c.24.o
- .debug_info    0x0000000000000e9f      0x307 aplite/appinfo.auto.c.24.o
+.debug_info     0x0000000000000000     0x121a
+ .debug_info    0x0000000000000000      0xf13 src/wearhacks.c.24.o
+ .debug_info    0x0000000000000f13      0x307 aplite/appinfo.auto.c.24.o
 
 .debug_abbrev   0x0000000000000000      0x382
  .debug_abbrev  0x0000000000000000      0x2e4 src/wearhacks.c.24.o
  .debug_abbrev  0x00000000000002e4       0x9e aplite/appinfo.auto.c.24.o
 
-.debug_loc      0x0000000000000000      0x3bb
- .debug_loc     0x0000000000000000      0x3bb src/wearhacks.c.24.o
+.debug_loc      0x0000000000000000      0x3af
+ .debug_loc     0x0000000000000000      0x3af src/wearhacks.c.24.o
 
 .debug_aranges  0x0000000000000000       0x88
  .debug_aranges
@@ -1393,15 +1395,15 @@ OUTPUT(/home/tony/Documents/WearHacks_2016/wearhacks/build/aplite/pebble-app.elf
 .debug_ranges   0x0000000000000000       0xa0
  .debug_ranges  0x0000000000000000       0xa0 src/wearhacks.c.24.o
 
-.debug_line     0x0000000000000000      0x3e0
- .debug_line    0x0000000000000000      0x2a1 src/wearhacks.c.24.o
- .debug_line    0x00000000000002a1      0x13f aplite/appinfo.auto.c.24.o
+.debug_line     0x0000000000000000      0x3e4
+ .debug_line    0x0000000000000000      0x2a5 src/wearhacks.c.24.o
+ .debug_line    0x00000000000002a5      0x13f aplite/appinfo.auto.c.24.o
 
-.debug_str      0x0000000000000000      0xa0d
- .debug_str     0x0000000000000000      0x85a src/wearhacks.c.24.o
-                                        0x909 (size before relaxing)
- .debug_str     0x000000000000085a      0x1b3 aplite/appinfo.auto.c.24.o
+.debug_str      0x0000000000000000      0xa46
+ .debug_str     0x0000000000000000      0x893 src/wearhacks.c.24.o
+                                        0x942 (size before relaxing)
+ .debug_str     0x0000000000000893      0x1b3 aplite/appinfo.auto.c.24.o
                                         0x29f (size before relaxing)
 
-.debug_frame    0x0000000000000000      0x100
- .debug_frame   0x0000000000000000      0x100 src/wearhacks.c.24.o
+.debug_frame    0x0000000000000000      0x108
+ .debug_frame   0x0000000000000000      0x108 src/wearhacks.c.24.o
