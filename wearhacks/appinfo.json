@@ -1,0 +1,19 @@
+{
+  "uuid": "d55e73d7-85f1-4e98-bf4f-8f333a4eef31",
+  "shortName": "wearhacks",
+  "longName": "wearhacks",
+  "companyName": "MakeAwesomeHappen",
+  "versionLabel": "1.0",
+  "sdkVersion": "3",
+  "targetPlatforms": ["aplite", "basalt", "chalk"],
+  "enableMultiJS": true,
+  "watchapp": {
+    "watchface": false
+  },
+  "appKeys": {
+    "dummy": 0
+  },
+  "resources": {
+    "media": []
+  }
+}
