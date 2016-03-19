@@ -10,4 +10,5 @@ typedef enum {
   INVALID_RESOURCE = 0,
   RESOURCE_ID_INVALID = 0,
   DEFAULT_MENU_ICON = 0,
+  RESOURCE_ID_ICON = 1,
 } ResourceId;

@@ -1295,7 +1295,7 @@ LOAD /home/tony/pebble-dev/pebble-sdk-4.2-linux64/arm-cs-tools/bin/../lib/gcc/ar
  .rodata.str1.1
                 0x000000000000048c       0xba src/wearhacks.c.24.o
  *fill*         0x0000000000000546        0x2 
- .rodata.segments.7408
+ .rodata.segments.7409
                 0x0000000000000548        0xc src/wearhacks.c.24.o
 
 .glue_7         0x0000000000000554        0x0
@@ -1373,9 +1373,9 @@ OUTPUT(/home/tony/Documents/WearHacks_2016/wearhacks/build/aplite/pebble-app.elf
  .comment       0x0000000000000000       0x4f aplite/appinfo.auto.c.24.o
  .comment       0x0000000000000000       0x4f /home/tony/pebble-dev/pebble-sdk-4.2-linux64/arm-cs-tools/bin/../lib/gcc/arm-none-eabi/4.7.2/thumb2/crtend.o
 
-.debug_info     0x0000000000000000     0x11a0
+.debug_info     0x0000000000000000     0x11a6
  .debug_info    0x0000000000000000      0xe9f src/wearhacks.c.24.o
- .debug_info    0x0000000000000e9f      0x301 aplite/appinfo.auto.c.24.o
+ .debug_info    0x0000000000000e9f      0x307 aplite/appinfo.auto.c.24.o
 
 .debug_abbrev   0x0000000000000000      0x382
  .debug_abbrev  0x0000000000000000      0x2e4 src/wearhacks.c.24.o
@@ -1397,11 +1397,11 @@ OUTPUT(/home/tony/Documents/WearHacks_2016/wearhacks/build/aplite/pebble-app.elf
  .debug_line    0x0000000000000000      0x2a1 src/wearhacks.c.24.o
  .debug_line    0x00000000000002a1      0x13f aplite/appinfo.auto.c.24.o
 
-.debug_str      0x0000000000000000      0x9fc
+.debug_str      0x0000000000000000      0xa0d
  .debug_str     0x0000000000000000      0x85a src/wearhacks.c.24.o
                                         0x909 (size before relaxing)
- .debug_str     0x000000000000085a      0x1a2 aplite/appinfo.auto.c.24.o
-                                        0x28e (size before relaxing)
+ .debug_str     0x000000000000085a      0x1b3 aplite/appinfo.auto.c.24.o
+                                        0x29f (size before relaxing)
 
 .debug_frame    0x0000000000000000      0x100
  .debug_frame   0x0000000000000000      0x100 src/wearhacks.c.24.o
