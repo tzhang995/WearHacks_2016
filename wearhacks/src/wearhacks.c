@@ -90,6 +90,14 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
   Tuple *lat_tuple = dict_find(iterator, KEY_LAT);
   Tuple *long_tuple = dict_find(iterator, KEY_LONG);
   Tuple *diff_tuple = dict_find(iterator, KEY_DIFF);
+
+  if(lat_tuple && long_tuple) {
+    latitude=lat_tuple->value->int32;
+    longitude=long_tuple->value->int32;
+    diff=diff_tuple->value->int32;
+    displayLocation();
+  }
+
   Tuple *slow_tuple = dict_find(iterator, KEY_SLOW);
   Tuple *fast_tuple = dict_find(iterator, KEY_FAST);
   slow = slow_tuple->value->int32;
@@ -108,13 +116,6 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
       .num_segments = ARRAY_LENGTH(segments),
     };
     vibes_enqueue_custom_pattern(pat);
-  }
-
-  if(lat_tuple && long_tuple) {
-    latitude=lat_tuple->value->int32;
-    longitude=long_tuple->value->int32;
-    diff=diff_tuple->value->int32;
-    displayLocation();
   }
 }
 
