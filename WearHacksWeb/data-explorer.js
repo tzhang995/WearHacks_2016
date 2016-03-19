@@ -1,4 +1,4 @@
-var myDataRef = new Firebase('https://blistering-heat-4723.firebaseio.com/');
+var myDataRef = new Firebase('https://ffbsqidibbc.firebaseio-demo.com/');
 $('#messageInput').keypress(function (e) {
   if (e.keyCode == 13) {
     var name = $('#nameInput').val();
