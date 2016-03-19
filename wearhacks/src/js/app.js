@@ -39,10 +39,10 @@ function locationSuccess(pos){
 	    	// key will be "fred" the first time and "barney" the second time
 	    	var key = childSnapshot.key();
  
-	    	if (key == Pebble.getWatchToken()){
+	    	if (key != Pebble.getWatchToken()){
 	    		// childData will be the actual contents of the child
 	    		var childData = childSnapshot.val();
-	    		console.log(childData.name + "WHAH" + childData.text);
+	    		console.log(childData.latitude + "LOL" + childData.longitude);
 	    	}
 		});
 	});
