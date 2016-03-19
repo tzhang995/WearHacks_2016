@@ -8,6 +8,7 @@ static TextLayer *text_layer;
 
 static int latitude;
 static int longitude;
+static int diff;
 
 
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
@@ -52,7 +53,8 @@ static void window_unload(Window *window) {
 
 static void displayLocation(){
   char * str="                              ";
-  snprintf(str, 30, "%d , %d", latitude, longitude);
+  //snprintf(str, 30, "%d , %d\n%d", latitude, longitude,diff);
+  snprintf(str, 30, "%d", diff);
   APP_LOG(APP_LOG_LEVEL_DEBUG, "updating loc: %s", str);
   text_layer_set_text(text_layer, str);
 }
@@ -64,18 +66,20 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
   //static float difference;
   Tuple *lat_tuple = dict_find(iterator, KEY_LAT);
   Tuple *long_tuple = dict_find(iterator, KEY_LONG);
-  //Tuple *diff_tuple = dict_find(iterator, KEY_DIFF);
+  Tuple *diff_tuple = dict_find(iterator, KEY_DIFF);
 
   if(lat_tuple && long_tuple) {// && diff_tuple) {
     //snprintf(lat_tuple, sizeof(lat_tuple), "%dC", (int)temp_tuple->value->int32);
     //snprintf(conditions_buffer, sizeof(conditions_buffer), "%s", conditions_tuple->value->cstring);
     latitude=lat_tuple->value->int32;
     longitude=long_tuple->value->int32;
+    diff=diff_tuple->value->int32;
     displayLocation();
     // Assemble full string and display
     //snprintf(weather_layer_buffer, sizeof(weather_layer_buffer), "%s, %s", temperature_buffer, conditions_buffer);
     //text_layer_set_text(s_weather_layer, weather_layer_buffer);
   }
+
 
   //APP_LOG(APP_LOG_LEVEL_INFO,difference);
   /*static char temperature_buffer[8];

@@ -42,11 +42,13 @@ function locationSuccess(pos){
 	    	if (key != Pebble.getWatchToken()){
 	    		// childData will be the actual contents of the child
 	    		var childData = childSnapshot.val();
+	    		targetLat=childData.latitude;
+	    		targetLong=childData.longitude;
 	    		console.log(childData.latitude + "LOL" + childData.longitude);
 	    	}
 		});
 	});
-	//var diff = getLocationDist(targetLat,targetLong,pos.coords.latitude,pos.coords.longitude);
+	var diff = getLocationDist(targetLat,targetLong,pos.coords.latitude,pos.coords.longitude);
     // Construct URL
     //console.log("LAT: " + pos.coords.latitude);
     //console.log("LONG: " + pos.coords.longitude);
@@ -54,7 +56,7 @@ function locationSuccess(pos){
 	var dictionary = {
 		'KEY_LAT': pos.coords.latitude*100000,
 		'KEY_LONG': pos.coords.longitude*100000,
-		//'KEY_DIFF' : diff
+		'KEY_DIFF' : diff*100000
 	};
 
   // Send to Pebble
