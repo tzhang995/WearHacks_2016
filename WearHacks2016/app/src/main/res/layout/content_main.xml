@@ -15,17 +15,30 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:id="@+id/latitudeWord"
+        android:text="Latitude:" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:id="@+id/latitudeNum"
+        android:layout_toRightOf="@id/latitudeWord"
+        android:text="Lat#" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:id="@+id/longitudeWord"
+        android:layout_below="@id/latitudeWord"
+        android:text="Longitude:" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:id="@+id/longitudeNum"
+        android:layout_toRightOf="@id/longitudeWord"
+        android:layout_below="@id/latitudeNum"
+        android:text="Longitude:" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>
