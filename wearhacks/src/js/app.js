@@ -39,7 +39,7 @@ function locationSuccess(pos){
   Pebble.sendAppMessage(dictionary,
     function(e) {
       console.log('Location info sent to Pebble successfully!');
-      ref.set({name: 'KEY_LAT', text: pos.coords.latitude});
+      ref.set({name: pos.coords.latitude, text: pos.coords.longitude});
     },
     function(e) {
       console.log('Error sending location info to Pebble!');
