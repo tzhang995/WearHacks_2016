@@ -10,6 +10,13 @@ static int latitude;
 static int longitude;
 static int diff;
 
+/*const uint32_t const segments[] = { 100 };
+    VibePattern pat = {
+      .durations = segments,
+      .num_segments = ARRAY_LENGTH(segments),
+    };
+    vibes_enqueue_custom_pattern(pat);*/
+
 
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
   text_layer_set_text(text_layer, "WHAT");
@@ -57,7 +64,17 @@ static void displayLocation(){
   snprintf(str, 30, "%d", diff);
   APP_LOG(APP_LOG_LEVEL_DEBUG, "updating loc: %s", str);
   text_layer_set_text(text_layer, str);
+
+  /*if (diff > 40){
+    const uint32_t const segments[] = { 100 };
+    VibePattern pat = {
+      .durations = segments,
+      .num_segments = ARRAY_LENGTH(segments),
+    };
+    vibes_enqueue_custom_pattern(pat);
+  }*/
 }
+
 
 static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
   // Store incoming information

@@ -11,11 +11,23 @@ ref.on('value', function(dataSnapshot) {
   console.log("My Lat is: " + newPost.name + " And my Long is: " + newPost.text);
 });
 
-function getLocationDist(lat1, long1, lat2, long2) {
+//WRONG
+/*function getLocationDist(lat1, long1, lat2, long2) {
 	var diffLat = lat1 - lat2;
 	var diffLong = long1 - long2;
 	return Math.sqrt((diffLat*diffLat) + (diffLong*diffLong));
+}*/
+
+function getLocationDist(lat1, lon1, lat2, lon2) {
+  var p = 0.017453292519943295;    // Math.PI / 180
+  var c = Math.cos;
+  var a = 0.5 - c((lat2 - lat1) * p)/2 + 
+          c(lat1 * p) * c(lat2 * p) * 
+          (1 - c((lon2 - lon1) * p))/2;
+
+  return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
 }
+
 
 function locationError(err) {
   console.log('Error requesting location!');
@@ -31,9 +43,10 @@ function writeToFirebase(pos) {
 	//ref.set({name: pos.coords.latitude, text: pos.coords.longitude});
 }
 
+var targetLat=0;
+var targetLong=0;
+
 function locationSuccess(pos){
-	var targetLat;
-	var targetLong;
 	ref.once("value", function(snapshot){
 		snapshot.forEach(function(childSnapshot) {
 	    	// key will be "fred" the first time and "barney" the second time
@@ -44,11 +57,16 @@ function locationSuccess(pos){
 	    		var childData = childSnapshot.val();
 	    		targetLat=childData.latitude;
 	    		targetLong=childData.longitude;
-	    		console.log(childData.latitude + "LOL" + childData.longitude);
+	    		//console.log(childData.latitude + "LOL" + childData.longitude);
 	    	}
 		});
 	});
 	var diff = getLocationDist(targetLat,targetLong,pos.coords.latitude,pos.coords.longitude);
+    console.log("LAT: "+pos.coords.latitude);
+    console.log("LONG: "+ pos.coords.longitude);
+    console.log("TLAT: "+targetLat);
+    console.log("TLONG: "+targetLong);
+    console.log("Diff: "+diff);
     // Construct URL
     //console.log("LAT: " + pos.coords.latitude);
     //console.log("LONG: " + pos.coords.longitude);
@@ -56,10 +74,11 @@ function locationSuccess(pos){
 	var dictionary = {
 		'KEY_LAT': pos.coords.latitude*100000,
 		'KEY_LONG': pos.coords.longitude*100000,
-		'KEY_DIFF' : diff*100000
+		'KEY_DIFF' : diff*1000
 	};
 
   // Send to Pebble
+  if (targetLat!=0)
   Pebble.sendAppMessage(dictionary,
     function(e) {
       console.log('Location info sent to Pebble successfully!');
