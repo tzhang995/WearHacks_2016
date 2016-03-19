@@ -95,27 +95,28 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
     latitude=lat_tuple->value->int32;
     longitude=long_tuple->value->int32;
     diff=diff_tuple->value->int32;
-    displayLocation();
-  }
 
-  Tuple *slow_tuple = dict_find(iterator, KEY_SLOW);
-  Tuple *fast_tuple = dict_find(iterator, KEY_FAST);
-  slow = slow_tuple->value->int32;
-  fast = fast_tuple->value->int32;
-  if (slow == 1){
-    static const uint32_t const segments[] = { 1000,10,1000 };
-    VibePattern pat = {
-      .durations = segments,
-      .num_segments = ARRAY_LENGTH(segments),
-    };
-    vibes_enqueue_custom_pattern(pat);
-  } else {
-    static const uint32_t const segments[] = { 50, 10, 50 };
-    VibePattern pat = {
-      .durations = segments,
-      .num_segments = ARRAY_LENGTH(segments),
-    };
-    vibes_enqueue_custom_pattern(pat);
+    Tuple *slow_tuple = dict_find(iterator, KEY_SLOW);
+    Tuple *fast_tuple = dict_find(iterator, KEY_FAST);
+    slow = slow_tuple->value->int32;
+    fast = fast_tuple->value->int32;
+    if (slow == 1){
+      static const uint32_t const segments[] = { 1000,10,1000 };
+      VibePattern pat = {
+        .durations = segments,
+        .num_segments = ARRAY_LENGTH(segments),
+      };
+      vibes_enqueue_custom_pattern(pat);
+    } else {
+      static const uint32_t const segments[] = { 50, 10, 50 };
+      VibePattern pat = {
+        .durations = segments,
+        .num_segments = ARRAY_LENGTH(segments),
+      };
+      vibes_enqueue_custom_pattern(pat);
+    }
+
+    displayLocation();
   }
 }
 
