@@ -4,11 +4,30 @@
     <title>WearHacks2016</title>
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
     <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.11/firebase.js'></script>
-    <script type='text/javascript' src='data-explorer.js'></script>
+    <!--<script type='text/javascript' src='data-explorer.js'></script>-->
   </head>
   <body>
     <div id='messagesDiv'></div>
     <input type='text' id='nameInput' placeholder='Name'>
     <input type='text' id='messageInput' placeholder='Message'>
+    <script>
+      var myDataRef = new Firebase('https://blistering-heat-4723.firebaseio.com/');
+      $('#messageInput').keypress(function (e) {
+        if (e.keyCode == 13) {
+          var name = $('#nameInput').val();
+          var text = $('#messageInput').val();
+          myDataRef.push({name: name, text: text});
+          $('#messageInput').val('');
+        }
+      });
+      myDataRef.on('child_added', function(snapshot) {
+        var message = snapshot.val();
+        displayChatMessage(message.name, message.text);
+      });
+      function displayChatMessage(name, text) {
+        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+      };
+    </script>
   </body>
 </html>
