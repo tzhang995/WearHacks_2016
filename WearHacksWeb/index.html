@@ -22,7 +22,7 @@
           $('#messageInput').val('');
         }
       });
-      myDataRef.on('child_added', function(snapshot) {
+      myDataRef.on('value', function(snapshot) {
         var message = snapshot.val();
         displayChatMessage(message.name, message.text);
       });
