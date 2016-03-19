@@ -12,13 +12,13 @@ ref.on('value', function(dataSnapshot) {
 });
 
 //WRONG
-/*function getLocationDist(lat1, long1, lat2, long2) {
+function getLocationDist(lat1, long1, lat2, long2) {
 	var diffLat = lat1 - lat2;
-	var diffLong = long1 - long2;
+	var diffLong = long1- long2;
 	return Math.sqrt((diffLat*diffLat) + (diffLong*diffLong));
-}*/
+}
 
-function getLocationDist(lat1, lon1, lat2, lon2) {
+/*function getLocationDist(lat1, lon1, lat2, lon2) {
   var p = 0.017453292519943295;    // Math.PI / 180
   var c = Math.cos;
   var a = 0.5 - c((lat2 - lat1) * p)/2 + 
@@ -26,7 +26,7 @@ function getLocationDist(lat1, lon1, lat2, lon2) {
           (1 - c((lon2 - lon1) * p))/2;
 
   return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
-}
+}*/
 
 
 function locationError(err) {
@@ -67,6 +67,7 @@ function locationSuccess(pos){
     console.log("TLAT: "+targetLat);
     console.log("TLONG: "+targetLong);
     console.log("Diff: "+diff);
+    console.log("Accuracy"+pos.coords.accuracy);
     // Construct URL
     //console.log("LAT: " + pos.coords.latitude);
     //console.log("LONG: " + pos.coords.longitude);
@@ -74,11 +75,11 @@ function locationSuccess(pos){
 	var dictionary = {
 		'KEY_LAT': pos.coords.latitude*100000,
 		'KEY_LONG': pos.coords.longitude*100000,
-		'KEY_DIFF' : diff*1000
+		'KEY_DIFF' : diff*10000
 	};
 
   // Send to Pebble
-  if (targetLat!=0)
+  if (targetLat!=0 && pos.coords.accuracy<40)
   Pebble.sendAppMessage(dictionary,
     function(e) {
       console.log('Location info sent to Pebble successfully!');
@@ -100,11 +101,11 @@ function setPositionWatcher(){
 
   options = {
     enableHighAccuracy: true,
-    timeout: 5000,
+    timeout: Infinity,
     maximumAge: 0
   };
 
-  positionWatcher = navigator.geolocation.watchPosition(addDataInterval, positionWatcherError, options);
+  positionWatcher = navigator.geolocation.watchPosition(locationSuccess, locationError, options);
 }
 function positionWatcherError(){
 	console.log('Error while trying to set up a position watcher');
@@ -116,7 +117,7 @@ function addDataInterval(){
 	navigator.geolocation.getCurrentPosition(
 		locationSuccess,
 		locationError,
-		{timeout: 15000, maximumAge: 60000}
+		{timeout: 30000, maximumAge: 60000}
 	);
 }
 
