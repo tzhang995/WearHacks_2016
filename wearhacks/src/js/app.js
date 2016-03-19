@@ -23,23 +23,11 @@ function locationError(err) {
 
 function writeToFirebase(pos) {
 	var uid = Pebble.getAccountToken();
-	ref.child(uid).once('value', function(snapshot) {
-    var exists = (snapshot.val() !== null);
-    if (exists) {
-  		ref.child(uid).set({
-    		latitude: pos.coords.latitude,
-    		longitude: pos.coords.longitude
-  		});
-    } else {
-    	ref.push().set({
-    		device: uid
-  		});
-  		ref.child(uid).set({
-    		latitude: pos.coords.latitude,
-    		longitude: pos.coords.longitude
-  		});
-    }
-  });
+	ref.child(uid).update({
+ 		latitude: pos.coords.latitude,
+ 		longitude: pos.coords.longitude
+	});
+  
 	//ref.set({name: pos.coords.latitude, text: pos.coords.longitude});
 }
 
@@ -70,7 +58,6 @@ function locationSuccess(pos){
 }
 
 
-var i = 1;
 //Sending data to firebase on a regular interval
 function addDataInterval(){
 	navigator.geolocation.getCurrentPosition(
@@ -78,10 +65,6 @@ function addDataInterval(){
 		locationError,
 		{timeout: 15000, maximumAge: 60000}
 	);
-	var latitude = "Pikachu";
-	var longitude = "Raichu";
-	i = i + 1;
-	//ref.set({name: latitude+i, text: longitude+i});
 }
 
 setInterval(addDataInterval, 500);
