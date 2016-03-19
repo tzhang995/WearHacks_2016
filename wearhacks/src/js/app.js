@@ -24,15 +24,15 @@ function locationError(err) {
 function locationSuccess(pos){
 var targetLat = 43.4771239;
 var targetLong = -80.5488477;
-var diff = getLocationDist(targetLat,targetLong,pos.coords.latitude,pos.coords.longitude);
+//var diff = getLocationDist(targetLat,targetLong,pos.coords.latitude,pos.coords.longitude);
   // Construct URL
   console.log("LAT: " + pos.coords.latitude);
   console.log("LONG: " + pos.coords.longitude);
-  console.log("DIFF: " + diff);
+  //console.log("DIFF: " + diff);
 	var dictionary = {
 		'KEY_LAT': pos.coords.latitude,
-		'KEY_LONG': pos.coords.longitude,
-		'KEY_DIFF' : diff
+		'KEY_LONG': pos.coords.longitude
+		//'KEY_DIFF' : diff
 	};
 
   // Send to Pebble

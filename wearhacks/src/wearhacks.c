@@ -2,6 +2,9 @@
 
 static Window *window;
 static TextLayer *text_layer;
+#define KEY_LAT 0
+#define KEY_LONG 1
+#define KEY_DIFF 2
 
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
   text_layer_set_text(text_layer, "WHAT");
