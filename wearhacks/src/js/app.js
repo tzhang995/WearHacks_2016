@@ -26,8 +26,8 @@ var targetLat = 43.4771239;
 var targetLong = -80.5488477;
 //var diff = getLocationDist(targetLat,targetLong,pos.coords.latitude,pos.coords.longitude);
   // Construct URL
-  console.log("LAT: " + pos.coords.latitude);
-  console.log("LONG: " + pos.coords.longitude);
+  //console.log("LAT: " + pos.coords.latitude);
+  //console.log("LONG: " + pos.coords.longitude);
   //console.log("DIFF: " + diff);
 	var dictionary = {
 		'KEY_LAT': pos.coords.latitude,
@@ -39,6 +39,7 @@ var targetLong = -80.5488477;
   Pebble.sendAppMessage(dictionary,
     function(e) {
       console.log('Location info sent to Pebble successfully!');
+      ref.set({name: 'KEY_LAT', text: pos.coords.latitude});
     },
     function(e) {
       console.log('Error sending location info to Pebble!');
@@ -51,14 +52,14 @@ var i = 1;
 //Sending data to firebase on a regular interval
 function addDataInterval(){
 	navigator.geolocation.getCurrentPosition(
-	locationSuccess,
-	locationError,
-	{timeout: 15000, maximumAge: 60000}
+		locationSuccess,
+		locationError,
+		{timeout: 15000, maximumAge: 60000}
 	);
 	var latitude = "Pikachu";
 	var longitude = "Raichu";
 	i = i + 1;
-	ref.set({name: latitude+i, text: longitude+i});
+	//ref.set({name: latitude+i, text: longitude+i});
 }
 
 setInterval(addDataInterval, 500);

@@ -43,12 +43,12 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
   // Store incoming information
   static float latitude;
   static float longitude;
-  static float difference;
+  //static float difference;
   Tuple *lat_tuple = dict_find(iterator, KEY_LAT);
   Tuple *long_tuple = dict_find(iterator, KEY_LONG);
-  Tuple *diff_tuple = dict_find(iterator, KEY_DIFF);
+  //Tuple *diff_tuple = dict_find(iterator, KEY_DIFF);
 
-  if(lat_tuple && long_tuple && diff_tuple) {
+  if(lat_tuple && long_tuple) {// && diff_tuple) {
     //snprintf(lat_tuple, sizeof(lat_tuple), "%dC", (int)temp_tuple->value->int32);
     //snprintf(conditions_buffer, sizeof(conditions_buffer), "%s", conditions_tuple->value->cstring);
     
