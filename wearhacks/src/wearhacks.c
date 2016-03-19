@@ -12,7 +12,8 @@ static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
 }
 
 static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
-  text_layer_set_text(text_layer, "THIS");
+  text_layer_set_text(text_layer, "LOVE");
+	vibes_long_pulse();
 }
 
 static void click_config_provider(void *context) {
