@@ -8,7 +8,7 @@ var ref = new Firebase("https://blistering-heat-4723.firebaseio.com/");
 ref.on('value', function(dataSnapshot) {
   var newPost = dataSnapshot.val();
 
-  console.log("My name is " + newPost.name);
+  console.log("My Lat is: " + newPost.name + " And my Long is: " + newPost.text);
 });
 
 var method = 'GET';
