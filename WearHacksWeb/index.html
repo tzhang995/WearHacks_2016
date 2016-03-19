@@ -33,7 +33,6 @@
         
             displayChatMessage(message.key, JSON.stringify(childData));
         });
-        
       });
       function displayChatMessage(name, text) {
         $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
