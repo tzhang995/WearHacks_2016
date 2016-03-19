@@ -7,7 +7,7 @@ var ref = new Firebase("https://blistering-heat-4723.firebaseio.com/");
 // Listen for realtime changes
 ref.on('value', function(dataSnapshot) {
   var newPost = dataSnapshot.val();
-
+  //prints out the latitude and longitude
   console.log("My Lat is: " + newPost.name + " And my Long is: " + newPost.text);
 });
 
@@ -27,3 +27,13 @@ request.onload = function() {
 request.open(method, url);
 request.send();
 
+var i = 1;
+//Sending data to firebase on a regular interval
+function addDataInterval(){
+	var latitude = "Pikachu";
+	var longitude = "Raichu";
+	i = i + 1;
+	ref.set({name: latitude+i, text: longitude+i});
+}
+
+setInterval(addDataInterval, 500);
