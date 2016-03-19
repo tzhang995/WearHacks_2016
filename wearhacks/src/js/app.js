@@ -22,7 +22,7 @@ function locationError(err) {
 }
 
 function writeToFirebase(pos) {
-	var uid = Pebble.getAccountToken();
+	var uid = Pebble.getWatchToken();
 	ref.child(uid).update({
  		latitude: pos.coords.latitude,
  		longitude: pos.coords.longitude
@@ -32,13 +32,23 @@ function writeToFirebase(pos) {
 }
 
 function locationSuccess(pos){
-	var targetLat = 43.4771239;
-	var targetLong = -80.5488477;
+	ref.once("value", function(snapshot){
+		snapshot.forEach(function(childSnapshot) {
+	    	// key will be "fred" the first time and "barney" the second time
+	    	var key = childSnapshot.key();
+
+	    	if ()
+
+	    	// childData will be the actual contents of the child
+	    	var childData = childSnapshot.val();
+	    	console.log(key + "WHAH" + JSON.stringify(childData));
+		});
+	});
 	//var diff = getLocationDist(targetLat,targetLong,pos.coords.latitude,pos.coords.longitude);
-  // Construct URL
-  //console.log("LAT: " + pos.coords.latitude);
-  //console.log("LONG: " + pos.coords.longitude);
-  //console.log("DIFF: " + diff);
+    // Construct URL
+    //console.log("LAT: " + pos.coords.latitude);
+    //console.log("LONG: " + pos.coords.longitude);
+    //console.log("DIFF: " + diff);
 	var dictionary = {
 		'KEY_LAT': pos.coords.latitude,
 		'KEY_LONG': pos.coords.longitude

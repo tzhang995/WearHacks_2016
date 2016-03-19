@@ -24,7 +24,16 @@
       });
       myDataRef.on('value', function(snapshot) {
         var message = snapshot.val();
-        displayChatMessage(message.name, message.text);
+        snapshot.forEach(function(childSnapshot) {
+            // key will be "fred" the first time and "barney" the second time
+            var key = childSnapshot.key();
+
+            // childData will be the actual contents of the child
+            var childData = childSnapshot.val();
+        
+            displayChatMessage(message.key, JSON.stringify(childData));
+        });
+        
       });
       function displayChatMessage(name, text) {
         $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
