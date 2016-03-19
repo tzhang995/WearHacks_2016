@@ -93,7 +93,7 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
   Tuple *slow_tuple = dict_find(iterator, KEY_SLOW);
   Tuple *fast_tuple = dict_find(iterator, KEY_FAST);
 
-  if(lat_tuple && long_tuple) {
+  if(lat_tuple && long_tuple && diff_tuple && slow_tuple && fast_tuple) {
     latitude=lat_tuple->value->int32;
     longitude=long_tuple->value->int32;
     diff=diff_tuple->value->int32;
