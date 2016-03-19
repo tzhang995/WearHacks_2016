@@ -22,7 +22,7 @@
           $('#messageInput').val('');
         }
       });
-      myDataRef.on('value', function(snapshot) {
+      myDataRef.on('child_changed', function(snapshot) {
         var message = snapshot.val();
         snapshot.forEach(function(childSnapshot) {
             // key will be "fred" the first time and "barney" the second time

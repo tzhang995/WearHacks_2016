@@ -37,7 +37,7 @@ function locationSuccess(pos){
 	    	// key will be "fred" the first time and "barney" the second time
 	    	var key = childSnapshot.key();
 
-	    	if ()
+	    	//if ()
 
 	    	// childData will be the actual contents of the child
 	    	var childData = childSnapshot.val();
