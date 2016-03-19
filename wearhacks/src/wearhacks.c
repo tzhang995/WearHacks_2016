@@ -36,6 +36,57 @@ static void window_unload(Window *window) {
   text_layer_destroy(text_layer);
 }
 
+static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
+  // Store incoming information
+  static float latitude;
+  static float longitude;
+  static float difference;
+  Tuple *lat_tuple = dict_find(iterator, KEY_LAT);
+  Tuple *long_tuple = dict_find(iterator, KEY_LONG);
+  Tuple *diff_tuple = dict_find(iterator, KEY_DIFF);
+
+  if(lat_tuple && long_tuple && diff_tuple) {
+    //snprintf(lat_tuple, sizeof(lat_tuple), "%dC", (int)temp_tuple->value->int32);
+    //snprintf(conditions_buffer, sizeof(conditions_buffer), "%s", conditions_tuple->value->cstring);
+    
+    // Assemble full string and display
+    //snprintf(weather_layer_buffer, sizeof(weather_layer_buffer), "%s, %s", temperature_buffer, conditions_buffer);
+    //text_layer_set_text(s_weather_layer, weather_layer_buffer);
+  }
+
+  //APP_LOG(APP_LOG_LEVEL_INFO,difference);
+  /*static char temperature_buffer[8];
+  static char conditions_buffer[32];
+  static char weather_layer_buffer[32];
+  
+  // Read tuples for data
+  Tuple *temp_tuple = dict_find(iterator, KEY_TEMPERATURE);
+  Tuple *conditions_tuple = dict_find(iterator, KEY_CONDITIONS);
+  
+  // If all data is available, use it
+  if(temp_tuple && conditions_tuple) {
+    snprintf(temperature_buffer, sizeof(temperature_buffer), "%dC", (int)temp_tuple->value->int32);
+    snprintf(conditions_buffer, sizeof(conditions_buffer), "%s", conditions_tuple->value->cstring);
+    
+    // Assemble full string and display
+    snprintf(weather_layer_buffer, sizeof(weather_layer_buffer), "%s, %s", temperature_buffer, conditions_buffer);
+    text_layer_set_text(s_weather_layer, weather_layer_buffer);
+  }*/
+
+}
+
+static void inbox_dropped_callback(AppMessageResult reason, void *context) {
+  APP_LOG(APP_LOG_LEVEL_ERROR, "Message dropped!");
+}
+
+static void outbox_failed_callback(DictionaryIterator *iterator, AppMessageResult reason, void *context) {
+  APP_LOG(APP_LOG_LEVEL_ERROR, "Outbox send failed!");
+}
+
+static void outbox_sent_callback(DictionaryIterator *iterator, void *context) {
+  APP_LOG(APP_LOG_LEVEL_INFO, "Outbox send success!");
+}
+
 static void init(void) {
   window = window_create();
   window_set_click_config_provider(window, click_config_provider);
@@ -45,6 +96,16 @@ static void init(void) {
   });
   const bool animated = true;
   window_stack_push(window, animated);
+    // Register callbacks
+  app_message_register_inbox_received(inbox_received_callback);
+  app_message_register_inbox_dropped(inbox_dropped_callback);
+  app_message_register_outbox_failed(outbox_failed_callback);
+  app_message_register_outbox_sent(outbox_sent_callback);
+  
+  // Open AppMessage
+  const int inbox_size = 128;
+  const int outbox_size = 128;
+  app_message_open(inbox_size, outbox_size);
 }
 
 static void deinit(void) {

@@ -11,25 +11,50 @@ ref.on('value', function(dataSnapshot) {
   console.log("My Lat is: " + newPost.name + " And my Long is: " + newPost.text);
 });
 
-var method = 'GET';
-var url = 'http://discover-380bg7t8.cloudapp.net/';
+function getLocationDist(lat1, long1, lat2, long2) {
+	var diffLat = lat1 - lat2;
+	var diffLong = long1 - long2;
+	return Math.sqrt((diffLat*diffLat) + (diffLong*diffLong));
+}
 
-// Create the request
-var request = new XMLHttpRequest();
+function locationError(err) {
+  console.log('Error requesting location!');
+}
 
-// Specify the callback for when the request is completed
-request.onload = function() {
-  // The request was successfully completed!
-  console.log('Got response: ' + this.responseText);
-};
+function locationSuccess(pos){
+var targetLat = 43.4771239;
+var targetLong = -80.5488477;
+var diff = getLocationDist(targetLat,targetLong,pos.coords.latitude,pos.coords.longitude);
+  // Construct URL
+  console.log("LAT: " + pos.coords.latitude);
+  console.log("LONG: " + pos.coords.longitude);
+  console.log("DIFF: " + diff);
+	var dictionary = {
+		'KEY_LAT': pos.coords.latitude,
+		'KEY_LONG': pos.coords.longitude,
+		'KEY_DIFF' : diff
+	};
 
-// Send the request
-request.open(method, url);
-request.send();
+  // Send to Pebble
+  Pebble.sendAppMessage(dictionary,
+    function(e) {
+      console.log('Location info sent to Pebble successfully!');
+    },
+    function(e) {
+      console.log('Error sending location info to Pebble!');
+    }
+  );
+}
+
 
 var i = 1;
 //Sending data to firebase on a regular interval
 function addDataInterval(){
+	navigator.geolocation.getCurrentPosition(
+	locationSuccess,
+	locationError,
+	{timeout: 15000, maximumAge: 60000}
+	);
 	var latitude = "Pikachu";
 	var longitude = "Raichu";
 	i = i + 1;
