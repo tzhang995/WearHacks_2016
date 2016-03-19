@@ -15,8 +15,8 @@
     "KEY_LAT": 0,
     "KEY_LONG": 1,
     "KEY_DIFF": 2,
-    "KEY_SLOW": 0,
-    "KEY_FAST": 1
+    "KEY_SLOW": 3,
+    "KEY_FAST": 4
   },
   "resources": {
     "media": [
