@@ -5,8 +5,9 @@ static TextLayer *text_layer;
 #define KEY_LAT 0
 #define KEY_LONG 1
 #define KEY_DIFF 2
-#define KEY_SLOW 3
-#define KEY_FAST 4
+#define KEY_MIN 3
+#define KEY_MAX 4
+#define KEY_VIBE 5
 
 static int latitude;
 static int longitude;
@@ -90,17 +91,17 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
   Tuple *lat_tuple = dict_find(iterator, KEY_LAT);
   Tuple *long_tuple = dict_find(iterator, KEY_LONG);
   Tuple *diff_tuple = dict_find(iterator, KEY_DIFF);
-  Tuple *slow_tuple = dict_find(iterator, KEY_SLOW);
-  Tuple *fast_tuple = dict_find(iterator, KEY_FAST);
+  Tuple *min_tuple = dict_find(iterator, KEY_MIN);
+  Tuple *max_tuple = dict_find(iterator, KEY_MAX);
+  Tuple *vibe_tuple = dict_find(iterator, KEY_VIBE);
 
-  if(lat_tuple && long_tuple && diff_tuple && slow_tuple && fast_tuple) {
+  if(lat_tuple && long_tuple && diff_tuple && min_tuple && max_tuple) {
     latitude=lat_tuple->value->int32;
     longitude=long_tuple->value->int32;
-    diff=diff_tuple->value->int32;
-
-    slow = slow_tuple->value->int32;
-    fast = fast_tuple->value->int32;
-    if (slow == 1){
+    diff=max_tuple->value->int32;
+    //slow = slow_tuple->value->int32;
+    //fast = fast_tuple->value->int32;
+    /*if (slow == 1){
       static const uint32_t const segments[] = { 1000,10,1000 };
       VibePattern pat = {
         .durations = segments,
@@ -114,9 +115,17 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
         .num_segments = ARRAY_LENGTH(segments),
       };
       vibes_enqueue_custom_pattern(pat);
-    }
+    }*/
 
     displayLocation();
+  }
+  if (vibe_tuple){
+    static const uint32_t const segments[] = { 1000 };
+      VibePattern pat = {
+        .durations = segments,
+        .num_segments = ARRAY_LENGTH(segments),
+      };
+      vibes_enqueue_custom_pattern(pat);
   }
 }
 

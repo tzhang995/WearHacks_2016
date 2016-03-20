@@ -50,6 +50,10 @@ function writeToFirebase(pos) {
 	//ref.set({name: pos.coords.latitude, text: pos.coords.longitude});
 }
 
+var distpoints=[0,25,50,100,200,400,600,1200,10000];
+var vibeintervals=[1200,1500,2000,2500,3000,4000,5000,8000,13000];
+var dpcur=0;
+
 var targetLat=0;
 var targetLong=0;
 
@@ -79,16 +83,18 @@ function locationSuccess(pos){
     //console.log("LAT: " + pos.coords.latitude);
     //console.log("LONG: " + pos.coords.longitude);
     //console.log("DIFF: " + diff);
+    var maxdiff=diff*1000+pos.coords.accuracy;
+    var mindiff=(diff*1000<=pos.coords.accuracy? 0 : diff*1000-pos.coords.accuracy);
 	var dictionary = {
 		'KEY_LAT': pos.coords.latitude*100000,
 		'KEY_LONG': pos.coords.longitude*100000,
-		'KEY_DIFF' : diff*1000+pos.coords.accuracy,
-    'KEY_SLOW' : ((oldBigger) ? 1 : 0),
-    'KEY_FAST' : ((oldBigger) ? 0 : 1)
+		'KEY_DIFF' : diff*1000,
+    'KEY_MIN' : mindiff,
+    'KEY_MAX' : maxdiff
 	};
 
   // Send to Pebble
-  if (targetLat!=0 && pos.coords.accuracy<40)
+  if (targetLat!=0 && pos.coords.accuracy<100)
   Pebble.sendAppMessage(dictionary,
     function(e) {
       console.log('Location info sent to Pebble successfully!');
@@ -98,6 +104,9 @@ function locationSuccess(pos){
       console.log('Error sending location info to Pebble!');
     }
   );
+  while (distpoints[dpcur]<mindiff) dpcur+=1;
+  while (distpoints[dpcur-1]>maxdiff) dpcur-=1;
+
 }
 
 var positionWatcher;
@@ -120,6 +129,25 @@ function positionWatcherError(){
 	console.log('Error while trying to set up a position watcher');
 }
 
+function sendVibeRequest(){
+  Pebble.sendAppMessage(
+    {'KEY_VIBE':0}
+    ,
+    function(e) {
+      console.log('Successfuly sent vibe');
+    },
+    function(e) {
+      console.log('Error sending vibe!');
+    }
+  );
+}
+
+function continuousVibe(){
+  sendVibeRequest();
+  setTimeout(continuousVibe,vibeintervals[dpcur]);
+}
+
+setTimeout(continuousVibe, 3000);
 
 //Sending data to firebase on a regular interval
 /*function addDataInterval(){
@@ -131,3 +159,4 @@ function positionWatcherError(){
 }
 
 setInterval(addDataInterval, 500);*/
+
