@@ -57,8 +57,8 @@
 
             // childData will be the actual contents of the child
             var childData = childSnapshot.val();
-        
-            displayChatMessage(message.key, JSON.stringify(childData));
+          
+            displayChatMessage(message.key, childData.latitude);
         });
       });
       function displayChatMessage(name, text) {
