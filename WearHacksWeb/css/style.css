@@ -33,6 +33,14 @@ table {
 	background-image: none;
 }
 
+.carousel-control.left span {
+    margin-left: -30px;
+}
+
+.carousel-control.right span {
+    margin-right: -30px;
+}
+
 .carouselbox {
 	padding-left: 50px;
 	padding-right: 50px;
