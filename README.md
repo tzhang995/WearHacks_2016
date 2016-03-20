@@ -3,7 +3,7 @@
 
 Be Amazed with the world around you
 
-Some people have this misconseption that technology confines us, that the more technology does, the less we humans will do. But that is not the case, humans have always had the need to explore, to find new and interesting things to do. And to help push that idea further, we have a new, revolutionary app designed to feed human nature's urge to explore. Introducing Discover, a smart watch app that pulls coordinates from a real-time server, and navigates the user to where ever they want to go.
+Some people have this misconseption that technology confines us, that the more technology does, the less we humans will do. But that is not the case, humans have always had the need to explore, to find new and interesting things to do. And to help push that idea further, we have a new, revolutionary app designed to feed human nature's urge to explore. Introducing Discover, a smart watch app that pulls coordinates from a real-time server, and navigates the user to where ever they want to go.  
 With this technology, exploring new things in life will be as easy as wearing a watch.
 
 ##Set up
