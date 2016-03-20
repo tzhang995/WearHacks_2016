@@ -1,16 +1,16 @@
-# project  configured on Sat Mar 19 21:01:55 2016 by
-# waf 1.7.11 (abi 98, python 2070af0 on darwin)
-# using /Users/lavieilo205/Library/Application Support/Pebble SDK/SDKs/current/sdk-core/pebble/waf configure
+# project  configured on Sun Mar 20 01:18:08 2016 by
+# waf 1.7.11 (abi 98, python 20706f0 on linux2)
+# using /home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/waf configure
 #
 ----------------------------------------
 Setting top to
-/Users/lavieilo205/Desktop/wearhacks/WearHacks_2016/wearhacks
+/home/tony/Documents/WearHacks_2016/wearhacks
 ----------------------------------------
 Setting out to
-/Users/lavieilo205/Desktop/wearhacks/WearHacks_2016/wearhacks/build
+/home/tony/Documents/WearHacks_2016/wearhacks/build
 ----------------------------------------
 Found Pebble SDK for chalk in:
-/Users/lavieilo205/Library/Application Support/Pebble SDK/SDKs/current/sdk-core/pebble/chalk
+/home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/chalk
 ----------------------------------------
 Checking for program gcc,cc
 arm-none-eabi-gcc
@@ -21,7 +21,7 @@ arm-none-eabi-gcc-ar
 find program=['ar'] paths='' var='AR' -> 'arm-none-eabi-gcc-ar'
 ----------------------------------------
 Found Pebble SDK for basalt in:
-/Users/lavieilo205/Library/Application Support/Pebble SDK/SDKs/current/sdk-core/pebble/basalt
+/home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/basalt
 ----------------------------------------
 Checking for program gcc,cc
 arm-none-eabi-gcc
@@ -32,7 +32,7 @@ arm-none-eabi-gcc-ar
 find program=['ar'] paths='' var='AR' -> 'arm-none-eabi-gcc-ar'
 ----------------------------------------
 Found Pebble SDK for aplite in:
-/Users/lavieilo205/Library/Application Support/Pebble SDK/SDKs/current/sdk-core/pebble/aplite
+/home/tony/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite
 ----------------------------------------
 Checking for program gcc,cc
 arm-none-eabi-gcc
