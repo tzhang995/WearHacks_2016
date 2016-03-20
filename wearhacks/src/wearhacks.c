@@ -63,11 +63,11 @@ static void displayLocation(){
 static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
   // Store incoming information
 
-  Tuple *lat_tuple = dict_find(iterator, KEY_LAT);
-  Tuple *long_tuple = dict_find(iterator, KEY_LONG);
+ // Tuple *lat_tuple = dict_find(iterator, KEY_LAT);
+  //Tuple *long_tuple = dict_find(iterator, KEY_LONG);
   Tuple *diff_tuple = dict_find(iterator, KEY_DIFF);
-  Tuple *min_tuple = dict_find(iterator, KEY_MIN);
-  Tuple *max_tuple = dict_find(iterator, KEY_MAX);
+  //Tuple *min_tuple = dict_find(iterator, KEY_MIN);
+  //Tuple *max_tuple = dict_find(iterator, KEY_MAX);
   Tuple *vibe_tuple = dict_find(iterator, KEY_VIBE);
 
   if(diff_tuple) {

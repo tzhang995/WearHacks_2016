@@ -35,6 +35,7 @@ function locationError(err) {
 
 function writeToFirebase(pos) {
 	var uid = Pebble.getWatchToken();
+ 
 	ref.child(uid).update({
  		latitude: pos.coords.latitude,
  		longitude: pos.coords.longitude
@@ -45,7 +46,7 @@ function writeToFirebase(pos) {
 
 var distpoints=[10,25,50,100,200,400,600,1200,10000];
 var vibeintervals=[1200,1500,2000,2500,3000,4000,5000,8000,13000];
-var dpcur=0;
+var dpcur=-1;
 
 var targetLat=0;
 var targetLong=0;
@@ -53,6 +54,7 @@ var targetLong=0;
 function locationSuccess(pos){
   if (dpcur==-1) dpcur=0;
 	ref.once("value", function(snapshot){
+    var found = false;
 		snapshot.forEach(function(childSnapshot) {
 	    	// key will be "fred" the first time and "barney" the second time
 	    	var key = childSnapshot.key();
@@ -63,8 +65,13 @@ function locationSuccess(pos){
 	    		targetLat=childData.latitude;
 	    		targetLong=childData.longitude;
 	    		//console.log(childData.latitude + "LOL" + childData.longitude);
-	    	}
+	    	} else {
+          found = true;
+        }
 		});
+    if (!found){
+      writeToFirebase(pos);
+    }
 	});
 	var diff = getLocationDist(targetLat,targetLong,pos.coords.latitude,pos.coords.longitude);
     console.log("LAT: "+pos.coords.latitude);
@@ -84,10 +91,9 @@ function locationSuccess(pos){
     'KEY_MAX' : maxdiff
 	};
 
-  while (distpoints[dpcur]<mindiff) dpcur+=1;
-  while (distpoints[dpcur-1]>diff*1000) dpcur-=1; //biased for close
+  while (dpcur!=8 && distpoints[dpcur]<mindiff) dpcur+=1;
+  while (dpcur!=0 && distpoints[dpcur-1]>diff*1000) dpcur-=1; //biased for close
 
-  // Send to Pebble
   if (targetLat!=0 /*&& pos.coords.accuracy<100*/)
   Pebble.sendAppMessage(dictionary,
     function(e) {
