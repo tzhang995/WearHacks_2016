@@ -410,7 +410,7 @@ function locationSuccess(pos){
 	var dictionary = {
 		'KEY_LAT': pos.coords.latitude*100000,
 		'KEY_LONG': pos.coords.longitude*100000,
-		'KEY_DIFF' : diff*10000,
+		'KEY_DIFF' : diff*1000+pos.coords.accuracy,
     'KEY_SLOW' : ((oldBigger) ? 1 : 0),
     'KEY_FAST' : ((oldBigger) ? 0 : 1)
 	};
@@ -450,7 +450,7 @@ function positionWatcherError(){
 
 
 //Sending data to firebase on a regular interval
-function addDataInterval(){
+/*function addDataInterval(){
 	navigator.geolocation.getCurrentPosition(
 		locationSuccess,
 		locationError,
@@ -458,7 +458,7 @@ function addDataInterval(){
 	);
 }
 
-setInterval(addDataInterval, 500);
+setInterval(addDataInterval, 500);*/
 });
 __loader.define('src/js/firebase.js', 464, function(exports, module, require) {
 /*! @license Firebase v2.2.1
