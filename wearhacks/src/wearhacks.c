@@ -39,7 +39,7 @@ static void window_load(Window *window) {
 
   text_layer = text_layer_create(
       GRect(0, PBL_IF_ROUND_ELSE(58, 52), bounds.size.w, 50));
-  text_layer_set_text(text_layer, "Press a button");
+  text_layer_set_text(text_layer, "WAIT");
   text_layer_set_text_alignment(text_layer, GTextAlignmentCenter);
   text_layer_set_font(text_layer, fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD));
   layer_add_child(window_layer, text_layer_get_layer(text_layer));
@@ -52,7 +52,7 @@ static void window_unload(Window *window) {
 static void displayLocation(){
   char * str="                              ";
   //snprintf(str, 30, "%d , %d\n%d", latitude, longitude,diff);
-  snprintf(str, 30, "%d", diff);
+  snprintf(str, 30, "%dm", diff);
   APP_LOG(APP_LOG_LEVEL_DEBUG, "updating loc: %s", str);
   text_layer_set_text(text_layer, str);
 
