@@ -19,24 +19,13 @@ static int fast;
 
 
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
-  text_layer_set_text(text_layer, "WHAT");
 }
 
 static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
-  text_layer_set_text(text_layer, "IS");
 }
 
 static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
-  text_layer_set_text(text_layer, "LOVE");
-	//vibes_long_pulse();
-  // Vibe pattern: ON for 200ms, OFF for 100ms, ON for 400ms:
-  static const uint32_t const segments[] = { 200, 100, 4000 };
-  VibePattern pat = {
-    .durations = segments,
-    .num_segments = ARRAY_LENGTH(segments),
-  };
-  vibes_enqueue_custom_pattern(pat);
- }
+}
 
 static void click_config_provider(void *context) {
   window_single_click_subscribe(BUTTON_ID_SELECT, select_click_handler);
