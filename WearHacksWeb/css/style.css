@@ -1,0 +1,67 @@
+.body-paragraph{
+	font-family: 'Oxygen', sans-serif;
+	color: #ECECEA;
+	float: right;
+}
+
+.page-header{
+	font-family: 'Bree Serif', serif;
+}
+
+body{
+	background-color: #558C89;
+}
+#footer{
+	font-family:"Comic Sans MS", cursive, sans-serif;
+}
+
+#shame-table thead{
+	font-family: 'Bree Serif', serif;
+	color: #ECECEA;
+}
+
+#shame-table tbody{
+	font-family: 'Oxygen', sans-serif;
+}
+.carousel{
+	float: left;
+	/*max-width: 50%;
+	max-height: 50%;*/
+	height: 50%;
+	width: 50%;
+	position: relative;
+}
+.index-paragraph{
+	float:right;
+	width:50%;
+	position: relative;
+}
+
+.item{
+	height: 200px;
+	width: 200px;
+}
+#tony{
+	float: left;
+	width: 50%;
+}
+#gagan{
+	float: right;
+	width: 50%;
+}
+.biography img{
+	float: left;
+	height: 50%;
+	width: 50%;
+}
+.biography p{
+	float: right;
+}
+
+th a:link{
+	color: white;
+	text-decoration: underline;
+}
+th a:visited{
+	color:white;
+}

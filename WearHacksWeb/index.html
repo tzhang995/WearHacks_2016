@@ -4,13 +4,40 @@
     <title>WearHacks2016</title>
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
     <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.11/firebase.js'></script>
-    <!--<script type='text/javascript' src='data-explorer.js'></script>-->
   </head>
   <body>
+
+    <div class="container-fluid title-message">
+      <div class="title">Discover This</div>
+      <div class="subtitle">Be amazed with the world around you</div>
+    </div>
+    <div class="container-fluid body-message">
+      <div class="container-fluid app-picture">
+        <!--TODO ADD CAROUSEL FOR APP PICTURES-->
+      </div>
+      <div class="container-fluid app-desc">
+        <p>A pebble app for the brave and the bold</p>
+      </div>
+    </div>
+
+    <div class="container-fluid firebase-table-container">
+      <table id="firebase-table">
+        <thead>
+          <tr>
+            <th>Pebble 1</th>
+            <th>Pebble 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
+      <button type="button" onclick="clearData()">Clear</button> 
+    </div>
+
     <div id='messagesDiv'></div>
-    <input type='text' id='nameInput' placeholder='Latitude'>
-    <input type='text' id='messageInput' placeholder='Longitude'>
-     <button type="button" onclick="clearData()">Clear</button> 
+    
+    
     <script>
       var myDataRef = new Firebase('https://blistering-heat-4723.firebaseio.com/');
       $('#messageInput').keypress(function (e) {
@@ -35,8 +62,12 @@
         });
       });
       function displayChatMessage(name, text) {
-        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
-        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+        var table = document.getElementById("myTable");
+        var row = table.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = name;
+        cell2.innerHTML = text;
       };
 
       function clearData(){
