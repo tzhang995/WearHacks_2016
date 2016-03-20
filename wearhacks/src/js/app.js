@@ -45,7 +45,7 @@ function writeToFirebase(pos) {
 }
 
 var distpoints=[10,25,50,100,200,400,600,1200,10000];
-var vibeintervals=[1200,1500,2000,2500,3000,4000,5000,8000,13000];
+var vibeintervals=[800,1500,2000,2500,3000,4000,5000,8000,13000];
 var dpcur=-1;
 
 var targetLat=0;
@@ -82,7 +82,7 @@ function locationSuccess(pos){
     console.log("Accuracy"+pos.coords.accuracy);
     // Construct URL
     var maxdiff=diff*1000+pos.coords.accuracy;
-    var mindiff=(diff*1000<=pos.coords.accuracy? 0 : diff*1000-pos.coords.accuracy);
+    var mindiff=(diff*1000<=pos.coords.accuracy*1.3? 0 : diff*1000-pos.coords.accuracy*1.3);
 	var dictionary = {
 		'KEY_LAT': pos.coords.latitude*100000,
 		'KEY_LONG': pos.coords.longitude*100000,
@@ -92,7 +92,7 @@ function locationSuccess(pos){
 	};
 
   while (dpcur!=8 && distpoints[dpcur]<mindiff) dpcur+=1;
-  while (dpcur!=0 && distpoints[dpcur-1]>diff*1000) dpcur-=1; //biased for close
+  while (dpcur!=0 && distpoints[dpcur-1]>(diff*1000+3*mindiff)/4) dpcur-=1; //biased for close
 
   if (targetLat!=0 /*&& pos.coords.accuracy<100*/)
   Pebble.sendAppMessage(dictionary,
