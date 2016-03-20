@@ -6,6 +6,10 @@ table {
 	color: white;
 }
 
+th {
+	text-align: center;
+}
+
 * {
 	font-family: 'Bitter', serif;
 	max-width: 100%;

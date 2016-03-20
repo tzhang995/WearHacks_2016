@@ -61,15 +61,25 @@
         <table id="firebase-table" class="table">
           <thead>
             <tr>
-              <th>Pebble 1</th>
-              <th>Pebble 2</th>
+              <th colspan="2">Pebble 1</th>
+              <th colspan="2">Pebble 2</th>
             </tr>
           </thead>
           <tbody>
-            
+            <tr>
+              <td>Latitude</td>
+              <td id="LAT1"></td>
+              <td>Latitude</td>
+              <td id="LAT2"></td>
+            </tr> 
+            <tr>
+              <td>Longitude</td>
+              <td id="LONG1"></td>
+              <td>Longitude</td>
+              <td id="LONG2"></td>
+            </tr> 
           </tbody>
         </table>
-        <button type="button" class="button" onclick="">Clear</button> 
         <div id='messagesDiv'></div>
       </div>
     </div>
@@ -77,15 +87,12 @@
     
     <script>
       var myDataRef = new Firebase('https://blistering-heat-4723.firebaseio.com/');
-      $('#messageInput').keypress(function (e) {
-        if (e.keyCode == 13) {
-          var name = $('#nameInput').val();
-          var text = $('#messageInput').val();
-          myDataRef.set({name: name, text: text});
-          $('#nameInput').val('');
-          $('#messageInput').val('');
-        }
-      });
+      var name = $('#nameInput').val();
+      var text = $('#messageInput').val();
+      myDataRef.set({name: name, text: text});
+      $('#nameInput').val('');
+      $('#messageInput').val('');
+    
       myDataRef.on('child_changed', function(snapshot) {
         var message = snapshot.val();
         snapshot.forEach(function(childSnapshot) {
