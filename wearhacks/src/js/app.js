@@ -51,6 +51,7 @@ var targetLat=0;
 var targetLong=0;
 
 function locationSuccess(pos){
+  if (dpcur==-1) dpcur=0;
 	ref.once("value", function(snapshot){
 		snapshot.forEach(function(childSnapshot) {
 	    	// key will be "fred" the first time and "barney" the second time
@@ -84,7 +85,7 @@ function locationSuccess(pos){
 	};
 
   while (distpoints[dpcur]<mindiff) dpcur+=1;
-  while (distpoints[dpcur-1]>maxdiff) dpcur-=1;
+  while (distpoints[dpcur-1]>diff*1000) dpcur-=1; //biased for close
 
   // Send to Pebble
   if (targetLat!=0 /*&& pos.coords.accuracy<100*/)
@@ -134,6 +135,10 @@ function sendVibeRequest(){
 }
 
 function continuousVibe(){
+  if (dpcur==-1){
+    setTimeout(continuousVibe,3000);
+    return;
+  }
   sendVibeRequest();
   setTimeout(continuousVibe,vibeintervals[dpcur]);
 }

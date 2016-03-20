@@ -70,20 +70,22 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
   Tuple *max_tuple = dict_find(iterator, KEY_MAX);
   Tuple *vibe_tuple = dict_find(iterator, KEY_VIBE);
 
-  if(lat_tuple && long_tuple && diff_tuple && min_tuple && max_tuple) {
-    latitude=lat_tuple->value->int32;
-    longitude=long_tuple->value->int32;
+  if(diff_tuple) {
+    //latitude=lat_tuple->value->int32;
+    //longitude=long_tuple->value->int32;
     diff=diff_tuple->value->int32;
     
     displayLocation();
   }
   if (vibe_tuple){
-    static const uint32_t const segments[] = { 1000 };
+    /*static const uint32_t const segments[] = { 100 };
       VibePattern pat = {
         .durations = segments,
         .num_segments = ARRAY_LENGTH(segments),
       };
-      vibes_enqueue_custom_pattern(pat);
+      vibes_cancel();
+      vibes_enqueue_custom_pattern(pat);*/
+      vibes_short_pulse();
   }
 }
 
