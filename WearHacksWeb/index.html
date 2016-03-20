@@ -95,23 +95,26 @@
     
       myDataRef.on('child_changed', function(snapshot) {
         var message = snapshot.val();
+        var i = 1;
         snapshot.forEach(function(childSnapshot) {
             // key will be "fred" the first time and "barney" the second time
             var key = childSnapshot.key();
 
             // childData will be the actual contents of the child
             var childData = childSnapshot.val();
-          
-            displayChatMessage(message.key, childData.latitude);
+            
+            displayChatMessage(childData.latitude,childData.longitude, i);
+            i++;
         });
       });
-      function displayChatMessage(name, text) {
-        var table = document.getElementById("firebase-table");
-        var row = table.insertRow(0);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        cell1.innerHTML = name;
-        cell2.innerHTML = text;
+      function displayChatMessage(name, text, number) {
+        if(number == 1){
+          $("LAT1").update(name);
+          $("LONG1").update(text);
+        } else {
+          $("LAT2").update(name);
+          $("LONG2").update(text);
+        }
       };
 
       function clearData(){
