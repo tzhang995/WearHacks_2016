@@ -87,35 +87,47 @@
     
     <script>
       var myDataRef = new Firebase('https://blistering-heat-4723.firebaseio.com/');
-      var name = $('#nameInput').val();
+      /*var name = $('#nameInput').val();
       var text = $('#messageInput').val();
       myDataRef.set({name: name, text: text});
       $('#nameInput').val('');
-      $('#messageInput').val('');
-    
-      myDataRef.on('child_changed', function(snapshot) {
-        var message = snapshot.val();
-        var i = 1;
-        snapshot.forEach(function(childSnapshot) {
-            // key will be "fred" the first time and "barney" the second time
-            var key = childSnapshot.key();
-            window.alert(5 + 6);
-            // childData will be the actual contents of the child
-            var childData = childSnapshot.val();
-            
-            displayChatMessage(childData.latitude,childData.longitude, i);
-            i++;
-        });
-      });
+      $('#messageInput').val('');*/
       function displayChatMessage(name, text, number) {
         if(number == 1){
-          $("LAT1").update(name);
-          $("LONG1").update(text);
+          $("#LAT1").html(name);
+          $("#LONG1").html(text);
         } else {
-          $("LAT2").update(name);
-          $("LONG2").update(text);
+          $("#LAT2").html(name);
+          $("#LONG2").html(text);
         }
       };
+      
+      myDataRef.child('65ce77f278e8a50bfbf4133e99263ef3').once("value", function(snapshot){
+        var childData = snapshot.val();
+        displayChatMessage(childData.latitude,childData.longitude, 1);
+      });
+
+      myDataRef.child('b109e7683c4303c54a551deb45360501').once("value", function(snapshot){
+        var childData = snapshot.val();
+        displayChatMessage(childData.latitude,childData.longitude, 2);
+      });
+
+      myDataRef.child('65ce77f278e8a50bfbf4133e99263ef3').on('child_changed', function(snapshot) {
+        var childData = snapshot.val();
+        if (childData < 0) {
+          $('#LONG1').html(childData);
+        } else {
+          $('#LAT1').html(childData);
+        }
+      });
+      myDataRef.child('b109e7683c4303c54a551deb45360501').on('child_changed', function(snapshot) {
+        var childData = snapshot.val();
+        if (childData < 0) {
+          $('#LONG2').html(childData);
+        } else {
+          $('#LAT2').html(childData);
+        }
+      });
 
       function clearData(){
       	myDataRef.remove();

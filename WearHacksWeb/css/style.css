@@ -66,6 +66,23 @@ th {
 	margin: auto;
 }
 
+table {
+	color: black;
+	text-align: center;
+	border-style: solid;
+}
+
+th, #LAT1, #LONG1 {
+	border-right: solid;
+}
+
+th {
+	color: white;
+	border-color: black;
+}
+
+
+
 /* centered columns styles */
 .row-centered {
     text-align:center;
