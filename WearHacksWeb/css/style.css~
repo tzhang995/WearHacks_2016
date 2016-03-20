@@ -1,0 +1,102 @@
+table {
+	margin-top: 50px;
+	padding-left: 50px;
+	padding-right: 50px;
+	max-width: 100%;
+	color: white;
+}
+
+th {
+	text-align: center;
+}
+
+* {
+	font-family: 'Bitter', serif;
+	max-width: 100%;
+}
+
+.carousel-inner > .item > img {
+	 margin: auto;
+	width: 144px;
+	height: 168px;
+}
+
+.carousel-inner {
+	width: 144px;
+	height: 168px;
+	border-style: solid;
+	    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    
+}
+
+.carousel-control.left, .carousel-control.right{
+	background-image: none;
+}
+
+.carousel-control.left span {
+    margin-left: -30px;
+}
+
+.carousel-control.right span {
+    margin-right: -30px;
+}
+
+.carouselbox {
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+.carousel-indicators {
+	margin-top: 50px;
+	color: black;
+}
+
+.app-desc {
+	max-width: 100%
+}
+
+.button {
+}
+
+.col-md-10 {
+	margin: auto;
+}
+
+table {
+	color: black;
+	text-align: center;
+	border-style: solid;
+}
+
+th, #LAT1, #LONG1 {
+	border-right: solid;
+}
+
+th {
+	color: white;
+	border-color: black;
+}
+
+
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
+.col-md-12 {
+	padding-left: 50px;
+	padding-right: 50px;
+}
