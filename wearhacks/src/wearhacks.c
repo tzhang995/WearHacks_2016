@@ -15,12 +15,7 @@ static int diff;
 static int slow;
 static int fast;
 
-/*const uint32_t const segments[] = { 100 };
-    VibePattern pat = {
-      .durations = segments,
-      .num_segments = ARRAY_LENGTH(segments),
-    };
-    vibes_enqueue_custom_pattern(pat);*/
+
 
 
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
@@ -72,22 +67,13 @@ static void displayLocation(){
   APP_LOG(APP_LOG_LEVEL_DEBUG, "updating loc: %s", str);
   text_layer_set_text(text_layer, str);
 
-  /*if (diff > 40){
-    const uint32_t const segments[] = { 100 };
-    VibePattern pat = {
-      .durations = segments,
-      .num_segments = ARRAY_LENGTH(segments),
-    };
-    vibes_enqueue_custom_pattern(pat);
-  }*/
+
 }
 
 
 static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
   // Store incoming information
-  //static float latitude;
-  //static float longitude;
-  //static float difference;
+
   Tuple *lat_tuple = dict_find(iterator, KEY_LAT);
   Tuple *long_tuple = dict_find(iterator, KEY_LONG);
   Tuple *diff_tuple = dict_find(iterator, KEY_DIFF);
@@ -98,25 +84,8 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
   if(lat_tuple && long_tuple && diff_tuple && min_tuple && max_tuple) {
     latitude=lat_tuple->value->int32;
     longitude=long_tuple->value->int32;
-    diff=max_tuple->value->int32;
-    //slow = slow_tuple->value->int32;
-    //fast = fast_tuple->value->int32;
-    /*if (slow == 1){
-      static const uint32_t const segments[] = { 1000,10,1000 };
-      VibePattern pat = {
-        .durations = segments,
-        .num_segments = ARRAY_LENGTH(segments),
-      };
-      vibes_enqueue_custom_pattern(pat);
-    } else {
-      static const uint32_t const segments[] = { 50, 10, 50 };
-      VibePattern pat = {
-        .durations = segments,
-        .num_segments = ARRAY_LENGTH(segments),
-      };
-      vibes_enqueue_custom_pattern(pat);
-    }*/
-
+    diff=diff_tuple->value->int32;
+    
     displayLocation();
   }
   if (vibe_tuple){

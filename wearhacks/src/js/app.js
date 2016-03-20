@@ -3,7 +3,6 @@ require('firebase');
 
 Firebase.INTERNAL.forceWebSockets();
 var ref = new Firebase("https://blistering-heat-4723.firebaseio.com/");
-//ref.set({ name: "PebbleB" });
 // Listen for realtime changes
 ref.on('value', function(dataSnapshot) {
   var newPost = dataSnapshot.val();
@@ -12,12 +11,6 @@ ref.on('value', function(dataSnapshot) {
 });
 var oldDif;
 var oldBigger;
-//WRONG
-/*function getLocationDist(lat1, long1, lat2, long2) {
-	var diffLat = lat1 - lat2;
-	var diffLong = long1- long2;
-	return Math.sqrt((diffLat*diffLat) + (diffLong*diffLong));
-}*/
 
 function getLocationDist(lat1, lon1, lat2, lon2) {
   var p = 0.017453292519943295;    // Math.PI / 180
@@ -50,7 +43,7 @@ function writeToFirebase(pos) {
 	//ref.set({name: pos.coords.latitude, text: pos.coords.longitude});
 }
 
-var distpoints=[0,25,50,100,200,400,600,1200,10000];
+var distpoints=[10,25,50,100,200,400,600,1200,10000];
 var vibeintervals=[1200,1500,2000,2500,3000,4000,5000,8000,13000];
 var dpcur=0;
 
@@ -80,21 +73,21 @@ function locationSuccess(pos){
     console.log("Diff: "+diff);
     console.log("Accuracy"+pos.coords.accuracy);
     // Construct URL
-    //console.log("LAT: " + pos.coords.latitude);
-    //console.log("LONG: " + pos.coords.longitude);
-    //console.log("DIFF: " + diff);
     var maxdiff=diff*1000+pos.coords.accuracy;
     var mindiff=(diff*1000<=pos.coords.accuracy? 0 : diff*1000-pos.coords.accuracy);
 	var dictionary = {
 		'KEY_LAT': pos.coords.latitude*100000,
 		'KEY_LONG': pos.coords.longitude*100000,
-		'KEY_DIFF' : diff*1000,
+		'KEY_DIFF' : distpoints[dpcur],
     'KEY_MIN' : mindiff,
     'KEY_MAX' : maxdiff
 	};
 
+  while (distpoints[dpcur]<mindiff) dpcur+=1;
+  while (distpoints[dpcur-1]>maxdiff) dpcur-=1;
+
   // Send to Pebble
-  if (targetLat!=0 && pos.coords.accuracy<100)
+  if (targetLat!=0 /*&& pos.coords.accuracy<100*/)
   Pebble.sendAppMessage(dictionary,
     function(e) {
       console.log('Location info sent to Pebble successfully!');
@@ -104,8 +97,6 @@ function locationSuccess(pos){
       console.log('Error sending location info to Pebble!');
     }
   );
-  while (distpoints[dpcur]<mindiff) dpcur+=1;
-  while (distpoints[dpcur-1]>maxdiff) dpcur-=1;
 
 }
 
@@ -149,14 +140,5 @@ function continuousVibe(){
 
 setTimeout(continuousVibe, 3000);
 
-//Sending data to firebase on a regular interval
-/*function addDataInterval(){
-	navigator.geolocation.getCurrentPosition(
-		locationSuccess,
-		locationError,
-		{timeout: 30000, maximumAge: 60000}
-	);
-}
 
-setInterval(addDataInterval, 500);*/
 
