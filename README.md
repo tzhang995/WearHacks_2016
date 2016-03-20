@@ -3,6 +3,8 @@
 
 Be Amazed with the World Around You
 
+![alt text](https://github.com/tzhang995/WearHacks_2016/blob/master/WearHacksWeb/img/menu.png "Menu")
+
 Some people have this misconception that technology confines us, that the more technology does, the less we humans will do. But that is not the case, humans have always had the need to explore, to find new and interesting things to do. And to help push that idea further, we have a new, first of its kind app designed to feed the human's urge to explore.  
 Introducing Discover, a Pebble smart watch app that pulls coordinates from FireBase, a real-time cloud server, and navigates the user to wherever they want to go. As you get closer to your location, your watch will vibrate more intensely, alerting you that you are closer to your target destination. With our carefully analyzed algorithm, we guarantee new and interesting things for you to find.  
 With this technology, exploring new things in life will be as easy as wearing a watch. From the childhood nostalgic game of hide-and-go-seek to an adrenaline rushing game of geo-caching, the possibilities are for you to discover.
